@@ -15,3 +15,21 @@ resource "aws_s3_bucket" "datalake" {
     CURSO = "EDC"
   }
 }
+
+resource "aws_s3_bucket_object" "raw_folder" {
+  bucket = aws_s3_bucket.datalake.id
+  key    = "raw/"
+  acl    = "private"
+}
+
+resource "aws_s3_bucket_object" "stage_folder" {
+  bucket = aws_s3_bucket.datalake.id
+  key    = "stage/"
+  acl    = "private"
+}
+
+resource "aws_s3_bucket_object" "athenas_folder" {
+  bucket = aws_s3_bucket.datalake.id
+  key    = "athenas/"
+  acl    = "private"
+}
