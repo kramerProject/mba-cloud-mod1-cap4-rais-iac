@@ -30,7 +30,7 @@ resource "aws_iam_policy" "lambda" {
   name        = "IGTIAWSLambdaBasicExecutionRolePolicy"
   path        = "/"
   description = "Provides write permissions to CloudWatch Logs, S3 buckets and EMR steps"
-  assume_role_policy = file("./permissions/Policy_Lambda.json")
+  policy = file("./permissions/Policy_Lambda.json")
 }
 
 
