@@ -67,8 +67,8 @@ resource "aws_iam_policy" "lambda" {
         "Effect": "Allow"
       }
     ]
-  }
-  EOF 
+}
+EOF 
 }
 
 
