@@ -1,4 +1,4 @@
-resource "aws_s3_bucket_objetc" "delta_insert" {
+resource "aws_s3_bucket_object" "spark_transform" {
     bucket = aws_s3_bucket.datalake.id
     key    = "pyspark/spark_job.py"
     acl    = "private"
