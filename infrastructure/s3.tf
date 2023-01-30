@@ -33,3 +33,9 @@ resource "aws_s3_bucket_object" "athenas_folder" {
   key    = "athenas/"
   acl    = "private"
 }
+
+resource "aws_s3_bucket_object" "tests_folder" {
+  bucket = aws_s3_bucket.datalake.id
+  key    = "tests/"
+  acl    = "private"
+}
