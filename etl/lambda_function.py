@@ -8,7 +8,7 @@ def handler(event, context):
     client = boto3.client("emr", region_name='us-east-1')
 
     cluster_id = client.run_job_flow(
-        Name='EMR-Kramer-IGTI-delta-4',
+        Name='EMR-Kramer-IGTI-delta-5',
         ServiceRole='EMR_DefaultRole',
         JobFlowRole='EMR_EC2_DefaultRole',
         VisibleToAllUsers=True,
@@ -56,7 +56,7 @@ def handler(event, context):
                         "Classification": "export",
                         "Properties": {
                             "PYSPARK_PYTHON": "/usr/bin/python3",
-                            "PYSPARK_DRIVER_PYTHON": "usr/bin/python3"
+                            "PYSPARK_DRIVER_PYTHON": "/usr/bin/python3"
                         }
                     }
                 ]
