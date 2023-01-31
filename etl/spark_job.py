@@ -97,6 +97,7 @@ java_import(spark._sc._jvm, "org.apache.spark.sql.api.python.*")
 
 
 rais = rais.withColumn("uf", f.col("municipio").cast('string').substr(1,2).cast('int'))
+rais = rais.withColumn("ano", f.lit("2020").cast('int'))
 
 
 rais = (
@@ -125,5 +126,6 @@ rais = (
     .write
     .mode("overwrite")
     .format("parquet")
+    .partitionBy('ano')
     .save("s3://datalake-kramer-edc-tf-producao-401868797180/stage/")
 )
