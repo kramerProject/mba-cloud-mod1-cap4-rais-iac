@@ -8,12 +8,12 @@ def handler(event, context):
     client = boto3.client("emr", region_name='us-east-1')
 
     cluster_id = client.run_job_flow(
-        Name='EMR-Kramer-IGTI-delta-3',
+        Name='EMR-Kramer-IGTI-delta-4',
         ServiceRole='EMR_DefaultRole',
         JobFlowRole='EMR_EC2_DefaultRole',
         VisibleToAllUsers=True,
         LogUri='s3://datalake-kramer-edc-tf-producao-401868797180/emr-logs',
-        ReleaseLabel='emr-6.9.0',
+        ReleaseLabel='emr-6.3.0',
         Instances={
             'InstanceGroups': [
                 {
