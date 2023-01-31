@@ -8,7 +8,7 @@ def handler(event, context):
     client = boto3.client("emr", region_name='us-east-1')
 
     cluster_id = client.run_job_flow(
-        Name='EMR-Kramer-IGTI-delta',
+        Name='EMR-Kramer-IGTI-delta-2',
         ServiceRole='EMR_DefaultRole',
         JobFlowRole='EMR_EC2_DefaultRole',
         VisibleToAllUsers=True,
@@ -99,7 +99,7 @@ def handler(event, context):
                         '--conf', 'spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog',
                         '--master', 'yarn',
                         '--deploy-mode', 'cluster',
-                        's3//datalake-kramer-edc-tf-producao-401868797180/pyspark/spark_job.py'
+                        's3://datalake-kramer-edc-tf-producao-401868797180/pyspark/spark_job.py'
                     ]
                 }
             }
