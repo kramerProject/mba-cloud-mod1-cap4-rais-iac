@@ -1,6 +1,6 @@
 resource "aws_glue_job" "glue_job_rais" {
   name     = var.glue_job_name
-  role_arn = var.crawler_role
+  role_arn = var.glue_role
   max_retries = "1"
   timeout = 2880 
   command {
