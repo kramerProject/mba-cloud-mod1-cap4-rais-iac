@@ -35,4 +35,4 @@ Data Lakehouse, Delta Lake and Amazon EMR
 
 Using Glue and Athenas
 
-![AWS Terraform v2](/img/arq_lamb.png)
+![AWS Terraform v2](/img/arq_2.png)
