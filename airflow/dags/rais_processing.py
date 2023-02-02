@@ -6,7 +6,7 @@ from airflow.models import Variable
 aws_access_key_id = Variable.get("aws_access_key_id")
 aws_secret_access_key = Variable.get("aws_secret_access_key")
 
-client = boto3.client("emr", region_name="us-east-2",
+client = boto3.client("emr", region_name="us-east-1",
                     aws_access_key_id=aws_access_key_id,
                     aws_secret_access_key=aws_secret_access_key)
 
@@ -16,7 +16,7 @@ s3client = boto3.client("s3", aws_access_key_id=aws_access_key_id,
 
 # Usando a novíssima Taskflow API
 default_args = {
-    'owner': 'Neylson Crepalde',
+    'owner': 'Kramer Silva',
     "depends_on_past": False,
     "start_date": days_ago(2),
     "email": ["airflow@airflow.com"],
