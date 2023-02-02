@@ -8,3 +8,5 @@ resource "aws_s3_bucket_object" "spark_code" {
 }
 
 # just one change 1
+
+spark-submit --master yarn --deploy-mode cluster s3://test-enem/pyspark/spark_job_test_manual.py
