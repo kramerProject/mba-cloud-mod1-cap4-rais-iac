@@ -23,5 +23,5 @@ f.col("municipio").cast('string').substr(1,2).cast('int'))`
 
 # Architecture
 
-![AWS Terraform v1](/img/arq1.png)
+![AWS Terraform v1](/img/arq_lamb.png)
 
