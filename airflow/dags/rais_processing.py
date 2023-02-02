@@ -117,5 +117,37 @@ def pipeline_rais():
         return cluster_id["JobFlowId"]
 
 
+    @task
+    def wait_emr_step(cid: str):
+        waiter = client.get_waiter('step_complete')
+        steps = client.list_steps(
+            ClusterId=cid
+        )
+        stepId = steps['Steps'][0]['Id']
+
+        waiter.wait(
+            ClusterId=cid,
+            StepId=stepId,
+            WaiterConfig={
+                'Delay': 30,
+                'MaxAttempts': 120
+            }
+        )
+        return True
+
+
+    @task
+    def terminate_emr_cluster(success_before: str, cid: str):
+        if success_before:
+            res = client.terminate_job_flows(
+                JobFlowIds=[cid]
+            )
+
+    # Encadeando a pipeline
+    cluid = emr_process_rais_data()
+    res_emr = wait_emr_step(cluid)
+    res_ter = terminate_emr_cluster(res_emr, cluid)
+
+
 
 pipeline_rais()
