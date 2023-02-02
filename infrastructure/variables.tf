@@ -33,3 +33,17 @@ variable "glue_role" {
   default = "arn:aws:iam::401868797180:role/service-role/AWSGlueServiceRole-kramer-test-igti"
 }
 
+variable "key_pair_name" {
+  default = "kramer-igti-rais"
+}
+
+
+variable "airflow_subnet_id" {
+  default = "subnet-005eeffbaafd46014"
+}
+
+variable "vpc_id" {
+  default = "vpc-06256913d9b993822"
+}
+
+
