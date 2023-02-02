@@ -20,14 +20,14 @@ def handler(event, context):
                     'Name': 'Master nodes',
                     'Market': 'SPOT',
                     'InstanceRole': 'MASTER',
-                    'InstanceType': 'm5.xlarge',
+                    'InstanceType': 'm5d.xlarge',
                     'InstanceCount': 1,
                 },
                 {
                     'Name': 'Worker nodes',
                     'Market': 'SPOT',
                     'InstanceRole': 'CORE',
-                    'InstanceType': 'm5.xlarge',
+                    'InstanceType': 'm5d.xlarge',
                     'InstanceCount': 1,
                 },
             ],
@@ -86,7 +86,7 @@ def handler(event, context):
         ],
 
         StepConcurrencyLevel=1,
-
+        
         Steps=[
             {
                 'Name': 'Spark JOB',
@@ -95,9 +95,6 @@ def handler(event, context):
                     'Jar': 'command-runner.jar',
                     'Args': [
                         'spark-submit',
-                        '--packages', 'io.delta:delta-core_2.12:1.0.0',
-                        '--conf', 'spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension',
-                        '--conf', 'spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog',
                         '--master', 'yarn',
                         '--deploy-mode', 'cluster',
                         's3://datalake-kramer-edc-tf-producao-401868797180/pyspark/spark_job.py'
