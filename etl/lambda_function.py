@@ -8,7 +8,7 @@ def handler(event, context):
     client = boto3.client("emr", region_name='us-east-1')
 
     cluster_id = client.run_job_flow(
-        Name='EMR-Kramer-IGTI-delta-6',
+        Name='EMR-Kramer-IGTI-delta-7',
         ServiceRole='EMR_DefaultRole',
         JobFlowRole='EMR_EC2_DefaultRole',
         VisibleToAllUsers=True,
@@ -20,14 +20,14 @@ def handler(event, context):
                     'Name': 'Master nodes',
                     'Market': 'SPOT',
                     'InstanceRole': 'MASTER',
-                    'InstanceType': 'm5d.xlarge',
+                    'InstanceType': 'm5.xlarge',
                     'InstanceCount': 1,
                 },
                 {
                     'Name': 'Worker nodes',
                     'Market': 'SPOT',
                     'InstanceRole': 'CORE',
-                    'InstanceType': 'm5d.xlarge',
+                    'InstanceType': 'm5.xlarge',
                     'InstanceCount': 1,
                 },
             ],
@@ -39,7 +39,6 @@ def handler(event, context):
 
         Applications=[
             {'Name': 'Hive'},
-            {'Name': 'Hadoop'},
             {'Name': 'JupyterEnterpriseGateway'},
             {'Name': 'JupyterHub'},
             {'Name': 'Hue'},
@@ -95,6 +94,9 @@ def handler(event, context):
                     'Jar': 'command-runner.jar',
                     'Args': [
                         'spark-submit',
+                        '--packages', 'io.delta:delta-core_2.12:1.0.0', 
+                        '--conf', 'spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension', 
+                        '--conf', 'spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog', 
                         '--master', 'yarn',
                         '--deploy-mode', 'cluster',
                         's3://datalake-kramer-edc-tf-producao-401868797180/pyspark/spark_job.py'
