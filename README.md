@@ -1,6 +1,10 @@
 ## Description
 
-This a practical activity part of the MBA in Data Engineering from XPE. It is expected to make raw data (RAIS 2020) ingestion in an S3 Data Lake , then use a BIG Data tecnology to transform and store data in parquet. After that one should be able to use Athenas to perform SQL querys in order to answer some questions concerning the Data Base. 
+This a practical activity part of the MBA in Data Engineering from XPE. It is expected to make raw data [RAIS_2020](http://pdet.mte.gov.br/microdados-rais-e-caged) ingestion in an S3 Data Lake , then use a BIG Data tecnology to transform and store data in parquet. After that, one should be able to use Athenas to perform SQL querys in order to answer some questions concerning the Data Base.
+
+## About the source
+
+The RAIS is an Administrative Registry, held annually, created with the purpose of meeting the control, statistics and information needs of government entities in the social area. It constitutes an essential instrument for complying with legal norms, as well as being of fundamental importance for monitoring and characterizing the formal labor market.
 ## What was Done
 
 - [X] Raw Data ingestion using boto3
@@ -25,10 +29,10 @@ f.col("municipio").cast('string').substr(1,2).cast('int'))`
 
 For practice purposes two architecture were used as shown bellow:
 
-### Data Lakehouse, Delta Lake and Amazon EMR
+Data Lakehouse, Delta Lake and Amazon EMR
 
 ![AWS Terraform v1](/img/arq_lamb.png)
 
-### Using Glue and Athenas
+Using Glue and Athenas
 
 ![AWS Terraform v2](/img/arq_lamb.png)
