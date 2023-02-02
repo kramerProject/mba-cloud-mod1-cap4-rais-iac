@@ -1,7 +1,7 @@
-# Description
+## Description
 
 This a practical activity part of the MBA in Data Engineering from XPE. It is expected to make raw data (RAIS 2020) ingestion in an S3 Data Lake , then use a BIG Data tecnology to transform and store data in parquet. After that one should be able to use Athenas to perform SQL querys in order to answer some questions concerning the Data Base. 
-# What was Done
+## What was Done
 
 - [X] Raw Data ingestion using boto3
 - [X] Infra as Code with terraform including
@@ -21,7 +21,14 @@ f.col("municipio").cast('string').substr(1,2).cast('int'))`
 - [X] Perform sql querys to extract Data information
 
 
-# Architecture
+## Architecture
+
+For practice purposes two architecture were used as shown bellow:
+
+### Data Lakehouse, Delta Lake and Amazon EMR
 
 ![AWS Terraform v1](/img/arq_lamb.png)
 
+### Using Glue and Athenas
+
+![AWS Terraform v2](/img/arq_lamb.png)
