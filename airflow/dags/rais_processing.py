@@ -117,4 +117,5 @@ def pipeline_rais():
         return cluster_id["JobFlowId"]
 
 
-execucao = pipeline_rais()
+
+pipeline_rais()
