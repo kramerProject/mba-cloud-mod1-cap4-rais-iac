@@ -8,7 +8,7 @@ def handler(event, context):
     client = boto3.client("emr", region_name='us-east-1')
 
     cluster_id = client.run_job_flow(
-        Name='EMR-Kramer-IGTI-delta-8',
+        Name='EMR-Kramer-IGTI-delta-10',
         ServiceRole='EMR_DefaultRole',
         JobFlowRole='EMR_EC2_DefaultRole',
         VisibleToAllUsers=True,
@@ -44,7 +44,8 @@ def handler(event, context):
             {'Name': 'Hue'},
             {'Name': 'Pig'},
             {'Name': 'Livy'},
-            {'Name': 'Spark'}
+            {'Name': 'Spark'},
+            {'Name': 'Hadoop'},
         ],
 
         Configurations=[
@@ -96,7 +97,7 @@ def handler(event, context):
                         'spark-submit',
                         '--master', 'yarn',
                         '--deploy-mode', 'cluster',
-                        's3://datalake-kramer-edc-tf-producao-401868797180/pyspark/spark_job.py'
+                        's3://datalake-kramer-edc-tf-producao-401868797180/pyspark/spark_test_manual_2.py'
                     ]
                 }
             }

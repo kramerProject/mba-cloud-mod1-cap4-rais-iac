@@ -1,9 +1,9 @@
 resource "aws_s3_bucket_object" "spark_transform" {
     bucket = aws_s3_bucket.datalake.id
-    key    = "pyspark/spark_job.py"
+    key    = "pyspark/spark_test_manual_2.py"
     acl    = "private"
-    source = "../etl/spark_job.py"
-    etag   = filemd5("../etl/spark_job.py")
+    source = "../etl/spark_test_manual_2.py"
+    etag   = filemd5("../etl/spark_test_manual_2.py")
 }
 
 resource "aws_s3_object" "codigo-glue-job" {
